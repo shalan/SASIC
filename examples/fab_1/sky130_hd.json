@@ -1,0 +1,521 @@
+{
+  "technology": "sky130",
+  "version": "1.0.1",
+  "description": "Sky130 HD standard cell library for structured ASIC",
+  "units": {
+    "distance": 1000,
+    "time": 1000,
+    "capacitance": 1000,
+    "resistance": 1000,
+    "current": 1000
+  },
+  "site": {
+    "name": "unithd",
+    "width": 0.46,
+    "height": 2.72
+  },
+  "cells": [
+    {
+      "name": "sky130_fd_sc_hd__nand2_2",
+      "alias": "NAND2",
+      "width": 5,
+      "height": 1,
+      "drive_strength": 2,
+      "cell_type": "logic",
+      "pins": {
+        "A": {
+          "direction": "input",
+          "capacitance": 0.004431,
+          "layer": "li1",
+          "shape":  [1.015, 1.075, 1.765, 1.325]
+        },
+        "B": {
+          "direction": "input",
+          "capacitance": 0.004418, 
+          "layer": "li1",
+          "shape": [0.085, 1.075, 0.845, 1.325]
+        },
+        "Y": {
+          "direction": "output",
+          "function": "Y=!(A&B)",
+          "max_capacitance": 0.295725,
+          "max_fanout": 8,
+          "layer": "li1",
+          "shape": [
+            [0.515, 1.665, 0.845, 2.465],
+            [1.355, 1.665, 1.685, 2.465], 
+            [0.515, 1.495, 2.215, 1.665], 
+            [1.935, 0.905, 2.215, 1.495], 
+            [1.355, 0.655, 2.215, 0.905]
+          ]
+        }
+      },
+      "timing": {
+        "A_to_Y": {"rise": 0.1156314, "fall": 0.0890522},
+        "B_to_Y": {"rise": 0.125234, "fall": 0.0925028}
+      },
+      "power": {
+        "leakage": 0.002459623
+      }
+    },
+    {
+      "name": "sky130_fd_sc_hd__or2_2",
+      "alias": "OR2",
+      "width": 5,
+      "height": 1,
+      "drive_strength": 2,
+      "cell_type": "logic",
+      "pins": {
+        "A": {
+          "direction": "input",
+          "capacitance": 0.004431,
+          "layer": "li1",
+          "shape":  [1.015, 1.075, 1.765, 1.325]
+        },
+        "B": {
+          "direction": "input",
+          "capacitance": 0.004418, 
+          "layer": "li1",
+          "shape": [0.085, 1.075, 0.845, 1.325]
+        },
+        "X": {
+          "direction": "output",
+          "function": "X=(A|B)",
+          "max_capacitance": 0.295725,
+          "max_fanout": 8,
+          "layer": "li1",
+          "shape": [
+            [0.515, 1.665, 0.845, 2.465],
+            [1.355, 1.665, 1.685, 2.465], 
+            [0.515, 1.495, 2.215, 1.665], 
+            [1.935, 0.905, 2.215, 1.495], 
+            [1.355, 0.655, 2.215, 0.905]
+          ]
+        }
+      },
+      "timing": {
+        "A_to_X": {"rise": 0.1156314, "fall": 0.0890522},
+        "B_to_X": {"rise": 0.125234, "fall": 0.0925028}
+      },
+      "power": {
+        "leakage": 0.002459623
+      }
+    },
+    {
+      "name": "sky130_fd_sc_hd__ha_2",
+      "alias": "HA",
+      "width": 12,
+      "height": 1,
+      "drive_strength": 2,
+      "cell_type": "logic",
+      "pins": {
+        "A": {
+          "direction": "input",
+          "capacitance": 0.004431,
+          "layer": "li1",
+          "shape":  [1.015, 1.075, 1.765, 1.325]
+        },
+        "B": {
+          "direction": "input",
+          "capacitance": 0.004418, 
+          "layer": "li1",
+          "shape": [0.085, 1.075, 0.845, 1.325]
+        },
+        "COUT": {
+          "direction": "output",
+          "function": "Y=!(A&B)",
+          "max_capacitance": 0.295725,
+          "max_fanout": 8,
+          "layer": "li1",
+          "shape": [
+            [0.515, 1.665, 0.845, 2.465],
+            [1.355, 1.665, 1.685, 2.465], 
+            [0.515, 1.495, 2.215, 1.665], 
+            [1.935, 0.905, 2.215, 1.495], 
+            [1.355, 0.655, 2.215, 0.905]
+          ]
+        },
+        "SUM": {
+          "direction": "output",
+          "function": "Y=(A^B)",
+          "max_capacitance": 0.295725,
+          "max_fanout": 8,
+          "layer": "li1",
+          "shape": [
+            [0.515, 1.665, 0.845, 2.465],
+            [1.355, 1.665, 1.685, 2.465], 
+            [0.515, 1.495, 2.215, 1.665], 
+            [1.935, 0.905, 2.215, 1.495], 
+            [1.355, 0.655, 2.215, 0.905]
+          ]
+        }
+      },
+      "timing": {
+        "A_to_SUM": {"rise": 0.1156314, "fall": 0.0890522},
+        "B_to_SUM": {"rise": 0.125234, "fall": 0.0925028},
+        "A_to_COUT": {"rise": 0.1156314, "fall": 0.0890522},
+        "B_to_COUT": {"rise": 0.125234, "fall": 0.0925028}
+      },
+      "power": {
+        "leakage": 0.002459623
+      }
+    },
+    {
+      "name": "sky130_fd_sc_hd__clkinv_2",
+      "alias": "INV",
+      "width": 4,
+      "height": 1,
+      "drive_strength": 2,
+      "cell_type": "logic",
+      "pins": {
+        "A": {
+          "direction": "input",
+          "layer": "li1",
+          "capacitance": 0.005174,
+          "shape": [0.085, 1.065, 1.305, 1.290]
+        },
+        "Y": {
+          "direction": "output",
+          "function": "Y=!A", 
+          "layer": "met1",
+          "max_capacitance": 0.395518,
+          "max_fanout": 8,
+          "location": [
+            [0.155, 1.630, 0.410, 2.435],
+            [1.010, 1.630, 1.270, 2.435],
+            [0.155, 1.460, 1.755, 1.630],
+            [1.475, 0.895, 1.755, 1.460],
+            [1.025, 0.725, 1.755, 0.895],
+            [1.025, 0.280, 1.250, 0.725]
+          ]
+        }
+      },
+      "timing": {
+        "A_to_Y": {"rise": 0.100953, "fall": 0.1001432}
+      },
+      "power": {
+        "leakage": 0.003910159
+      }
+    },
+    {
+      "name": "sky130_fd_sc_hd__xor2_2",
+      "alias": "XOR2", 
+      "width": 13,
+      "height": 1,
+      "drive_strength": 2,
+      "cell_type": "logic",
+      "pins": {
+        "A": {
+          "direction": "input",
+          "layer": "met1",
+          "capacitance": 0.0045,
+          "location": [0.92, 1.36]
+        },
+        "B": {
+          "direction": "input", 
+          "layer": "met1",
+          "capacitance": 0.0045,
+          "location": [1.84, 1.36]
+        },
+        "Y": {
+          "direction": "output",
+          "function": "Y=A^B",
+          "layer": "met1",
+          "max_capacitance": 0.15,
+          "max_fanout": 8,
+          "location": [5.98, 1.36]
+        },
+        "VDD": {
+          "direction": "inout",
+          "layer": "met1", 
+          "net": "VDD",
+          "location": [5.98, 2.72]
+        },
+        "VSS": {
+          "direction": "inout",
+          "layer": "met1",
+          "net": "VSS", 
+          "location": [5.98, 0.0]
+        }
+      },
+      "timing": {
+        "A_to_Y": {"rise": 0.25, "fall": 0.22},
+        "B_to_Y": {"rise": 0.23, "fall": 0.20}
+      },
+      "power": {
+        "leakage": 0.40,
+        "internal": {"A": 1.2, "B": 1.2}
+      }
+    },
+    {
+      "name": "sky130_fd_sc_hd__clkbuf_4",
+      "alias": "CLKBUF",
+      "width": 6,
+      "height": 1, 
+      "drive_strength": 4,
+      "cell_type": "buffer",
+      "pins": {
+        "A": {
+          "direction": "input",
+          "layer": "met1",
+          "capacitance": 0.0040,
+          "location": [0.92, 1.36]
+        },
+        "Y": {
+          "direction": "output",
+          "function": "Y=A",
+          "layer": "met1",
+          "max_capacitance": 0.50,
+          "max_fanout": 20,
+          "location": [2.76, 1.36]
+        },
+        "VDD": {
+          "direction": "inout", 
+          "layer": "met1",
+          "net": "VDD",
+          "location": [2.76, 2.72]
+        },
+        "VSS": {
+          "direction": "inout",
+          "layer": "met1", 
+          "net": "VSS",
+          "location": [2.76, 0.0]
+        }
+      },
+      "timing": {
+        "A_to_Y": {"rise": 0.10, "fall": 0.08}
+      },
+      "power": {
+        "leakage": 0.35,
+        "internal": {"A": 1.0}
+      }
+    },
+    {
+      "name": "sky130_fd_sc_hd__dfbbp_1",
+      "alias": "DFF",
+      "function": "FF",
+      "width": 26,
+      "height": 1,
+      "drive_strength": 1,
+      "cell_type": "sequential",
+      "clock_pin": "CLK",
+      "pins": {
+        "D": {
+          "direction": "input",
+          "layer": "met1",
+          "capacitance": 0.0035,
+          "location": [0.92, 1.36]
+        },
+        "SET_B": {
+          "direction": "input",
+          "layer": "met1",
+          "capacitance": 0.0034380000,
+          "location": [0.92, 1.36]
+        },
+        "RESET_B": {
+          "direction": "input",
+          "layer": "met1",
+          "capacitance": 0.0015970000,
+          "location": [0.92, 1.36]
+        },
+        "CLK": {
+          "direction": "input",
+          "layer": "met1",
+          "capacitance": 0.0080,
+          "clock": true,
+          "location": [5.52, 1.36]
+        },
+        "Q": {
+          "direction": "output", 
+          "layer": "met1",
+          "max_capacitance": 0.1684670000,
+          "max_fanout": 8,
+          "location": [11.96, 1.36]
+        },
+        "Q_N": {
+          "direction": "output", 
+          "layer": "met1",
+          "max_capacitance": 0.1684670000,
+          "max_fanout": 8,
+          "location": [11.96, 1.36]
+        }
+      },
+      "timing": {
+        "setup_time": {"D": 0.2498027000},
+        "hold_time": {"D": 0.1847676000},
+        "CLK_to_Q": {"rise": 0.5632610000, "fall": 0.4849847000},
+        "CLK_to_Q_N": {"rise": 0.4591943000, "fall": 0.4994100000}
+      },
+      "power": {
+        "leakage": 0.01355575
+      }
+    },
+    {
+      "name": "sky130_fd_sc_hd__tapvpwrvgnd_1",
+      "alias": "TAP",
+      "function": "welltap",
+      "width": 1,
+      "height": 1,
+      "cell_type": "physical",
+      "spacing_rule": 28,
+      "pins": {
+        
+      }
+    },
+    {
+      "name" : "sky130_fd_sc_hd__decap_3",
+      "alias": "DECAP3",
+      "function": "decap",
+      "width": 3,
+      "height": 1,
+      "cell_type": "physical", 
+      "density_rule": 0.15,
+      "pins": {
+        
+      }
+    },
+    {
+      "name" : "sky130_fd_sc_hd__decap_4",
+      "alias": "DECAP4",
+      "function": "decap",
+      "width": 4,
+      "height": 1,
+      "cell_type": "physical", 
+      "density_rule": 0.15,
+      "pins": {
+        
+      }
+    },
+    {
+      "name": "sky130_fd_sc_hd__decap_12",
+      "alias": "DECAP12", 
+      "function": "decap",
+      "width": 12,
+      "height": 1,
+      "cell_type": "physical",
+      "pins": {
+        
+      }
+    },
+    {
+      "name": "sky130_fd_sc_hd__conb_1",
+      "alias": "CONB",
+      "function": "tie",
+      "width": 3,
+      "height": 1,
+      "cell_type": "physical",
+      "pins": {
+        "HI": {
+          "direction": "output",
+          "layer": "met1",
+          "max_fanout": 5,
+          "max_capacitance": 1.9038,
+          "location": [0.92, 1.36],
+          "net": "VDD"
+        },
+        "LO": {
+          "direction": "output", 
+          "layer": "met1",
+          "max_fanout": 5,
+          "max_capacitance": 2.0468,
+          "location": [1.38, 1.36],
+          "net": "VSS"
+        }
+      }
+    }
+  ],
+  "layers": {
+    "met1": {
+      "direction": "horizontal",
+      "pitch": 0.48,
+      "min_width": 0.14,
+      "min_spacing": 0.14,
+      "sheet_resistance": 0.125,
+      "capacitance_per_um": 0.030,
+      "programmable": false
+    },
+    "met2": {
+      "direction": "vertical",
+      "pitch": 0.48,
+      "min_width": 0.14,
+      "min_spacing": 0.14,
+      "sheet_resistance": 0.125,
+      "capacitance_per_um": 0.025,
+      "programmable": false
+    },
+    "met3": {
+      "direction": "horizontal",
+      "pitch": 0.48,
+      "min_width": 0.30,
+      "min_spacing": 0.30,
+      "sheet_resistance": 0.047,
+      "capacitance_per_um": 0.020,
+      "programmable": true
+    },
+    "met4": {
+      "direction": "vertical",
+      "pitch": 0.96,
+      "min_width": 0.30,
+      "min_spacing": 0.30,
+      "sheet_resistance": 0.047,
+      "capacitance_per_um": 0.018,
+      "programmable": true
+    },
+    "met5": {
+      "direction": "horizontal",
+      "pitch": 1.44,
+      "min_width": 0.30,
+      "min_spacing": 0.30,
+      "sheet_resistance": 0.029,
+      "capacitance_per_um": 0.016,
+      "programmable": true
+    }
+  },
+  "vias": [
+    {
+      "name": "via1",
+      "layers": ["met1", "met2"],
+      "size": [0.15, 0.15],
+      "resistance": 4.5,
+      "programmable": false,
+      "enclosure": {
+        "met1": [0.055, 0.085],
+        "met2": [0.055, 0.085]
+      }
+    },
+    {
+      "name": "via2",
+      "layers": ["met2", "met3"],
+      "size": [0.20, 0.20],
+      "resistance": 3.4,
+      "programmable": true,
+      "enclosure": {
+        "met2": [0.085, 0.085],
+        "met3": [0.065, 0.065]
+      }
+    },
+    {
+      "name": "via3",
+      "layers": ["met3", "met4"],
+      "size": [0.20, 0.20],
+      "resistance": 3.4,
+      "programmable": true,
+      "enclosure": {
+        "met3": [0.065, 0.065],
+        "met4": [0.065, 0.065]
+      }
+    },
+    {
+      "name": "via4",
+      "layers": ["met4", "met5"],
+      "size": [0.26, 0.26],
+      "resistance": 0.29,
+      "programmable": true,
+      "enclosure": {
+        "met4": [0.065, 0.065],
+        "met5": [0.065, 0.065]
+      }
+    }
+  ]
+}
+

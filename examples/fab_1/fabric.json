@@ -1,0 +1,30 @@
+{
+  "name": "Fabric_15x15",
+  "array_dimensions": {"rows": 15, "cols": 15},
+  "tile_configuration": {
+    "default_tile": "Logic_4x60"
+  },
+  "edge_cells": {
+    "left": {"enable": true, "cell": "DECAP12"},
+    "right": {"enable": true, "cell": "DECAP12"}
+  },
+  "io_ring": {
+    "edges": {
+      "north": {
+        "pins": [
+          {"name": "clk_in", "type": "clock", "direction": "input"},
+          {"name": "data_in_0", "type": "data", "direction": "input"}
+        ],
+        "spacing": "auto"
+      }
+    }
+  },
+    "margins": {
+    "horizontal": 10.0,
+    "vertical": 10.0
+  },
+  "power_distribution": {
+    "primary_grid": {"VDD": {"layer": "met4", "pitch": 27.6, "width": 2.0}},
+    "secondary_grid": {"VDD": {"layer": "met3", "pitch": 13.8, "width": 1.0}}
+  }
+}

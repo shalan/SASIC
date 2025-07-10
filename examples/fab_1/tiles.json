@@ -1,0 +1,67 @@
+{
+  "tiles": [
+    {
+      "name": "Logic_4x60",
+      "description": "4-row logic tile with 60 sites per row",
+      "height": 4,
+      "width": 60,
+      "site": "unithd",
+      "rows": [
+        {
+          "row_id": 0,
+          "cells": [
+            {"type": "TAP", "count": 1},
+            {"type": "NAND2", "count": 5},
+            {"type": "DECAP4", "count": 1},
+            {"type": "TAP", "count": 1},
+            {"type": "CONB", "count": 1},
+            {"type": "NAND2", "count": 2},
+            {"type": "INV", "count": 1},
+            {"type": "HA", "count": 1}
+          ]
+        },
+        {
+          "row_id": 1,
+          "cells": [
+            {"type": "TAP", "count": 1},
+            {"type": "NAND2", "count": 5},
+            {"type": "DECAP4", "count": 1},
+            {"type": "TAP", "count": 1},
+            {"type": "CONB", "count": 1},
+            {"type": "NAND2", "count": 2},
+            {"type": "INV", "count": 1},
+            {"type": "HA", "count": 1}
+          ]
+        },
+        {
+          "row_id": 2,
+          "cells": [
+            {"type": "TAP", "count": 1},
+            {"type": "NAND2", "count": 5},
+            {"type": "DECAP4", "count": 1},
+            {"type": "TAP", "count": 1},
+            {"type": "CONB", "count": 1},
+            {"type": "NAND2", "count": 2},
+            {"type": "INV", "count": 1},
+            {"type": "CLKBUF", "count": 1},
+            {"type": "OR2", "count": 1},
+            {"type": "TAP", "count": 1}
+            
+          ]
+        },
+        {
+          "row_id": 3,
+          "cells": [
+            {"type": "TAP", "count": 1},
+            {"type": "DFF", "count": 1},
+            {"type": "DECAP3", "count": 1},
+            {"type": "TAP", "count": 1},
+            {"type": "CONB", "count": 1},
+            {"type": "DFF", "count": 1}
+          ]
+        }
+      ]
+    }
+  ]
+}
+
