@@ -1,7 +1,7 @@
 {
   "tiles": [
     {
-      "name": "Logic_4x60",
+      "name": "tile_4x60",
       "description": "4-row logic tile with 60 sites per row",
       "height": 4,
       "width": 60,
