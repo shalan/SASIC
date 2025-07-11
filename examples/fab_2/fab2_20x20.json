@@ -1,0 +1,132 @@
+{
+  "name": "Fab2_20x20",
+  "array_dimensions": {"rows": 20, "cols": 20},
+  "tile_configuration": {
+    "default_tile": "NAND2_4x60",
+    "regions": [
+      {
+        "name": "MEM_ADDER",
+        "tile_type": "MM_4x60", 
+        "area": {"row_start": 0, "col_start": 4, "width": 2, "height": 20}
+      },
+      {
+        "name": "MEM_ADDER",
+        "tile_type": "MM_4x60", 
+        "area": {"row_start": 0, "col_start": 14, "width": 2, "height": 20}
+      }
+    ]
+  },
+  "edge_cells": {
+    "left": {"enable": true, "cell": "DECAP12"},
+    "right": {"enable": true, "cell": "DECAP12"}
+  },
+  "io_ring": {
+    "edges": {
+      "south": {
+        "pins": [
+          {"name": "clk", "type": "clock", "direction": "input"},
+          {"name": "rst_n", "type": "reset", "direction": "input"}
+        ],
+        "spacing": "auto"
+      },
+      "north": {
+        "pins": [
+          {"name": "A0_in", "type": "io", "direction": "input"},
+          {"name": "A0_out", "type": "io", "direction": "output"},
+          {"name": "A0_oe", "type": "io", "direction": "output"},
+          {"name": "A1_in", "type": "io", "direction": "input"},
+          {"name": "A1_out", "type": "io", "direction": "output"},
+          {"name": "A1_oe", "type": "io", "direction": "output"},
+          {"name": "A2_in", "type": "io", "direction": "input"},
+          {"name": "A2_out", "type": "io", "direction": "output"},
+          {"name": "A2_oe", "type": "io", "direction": "output"},
+          {"name": "A3_in", "type": "io", "direction": "input"},
+          {"name": "A3_out", "type": "io", "direction": "output"},
+          {"name": "A3_oe", "type": "io", "direction": "output"},
+          {"name": "A4_in", "type": "io", "direction": "input"},
+          {"name": "A4_out", "type": "io", "direction": "output"},
+          {"name": "A4_oe", "type": "io", "direction": "output"},
+          {"name": "A5_in", "type": "io", "direction": "input"},
+          {"name": "A5_out", "type": "io", "direction": "output"},
+          {"name": "A5_oe", "type": "io", "direction": "output"},
+          {"name": "A6_in", "type": "io", "direction": "input"},
+          {"name": "A6_out", "type": "io", "direction": "output"},
+          {"name": "A6_oe", "type": "io", "direction": "output"},
+          {"name": "A7_in", "type": "io", "direction": "input"},
+          {"name": "A7_out", "type": "io", "direction": "output"},
+          {"name": "A7_oe", "type": "io", "direction": "output"}
+        ],
+        
+        "spacing": "auto"
+      },
+      "east": {
+        "pins": [
+          {"name": "B0_in", "type": "io", "direction": "input"},
+          {"name": "B0_out", "type": "io", "direction": "output"},
+          {"name": "B0_oe", "type": "io", "direction": "output"},
+          {"name": "B1_in", "type": "io", "direction": "input"},
+          {"name": "B1_out", "type": "io", "direction": "output"},
+          {"name": "B1_oe", "type": "io", "direction": "output"},
+          {"name": "B2_in", "type": "io", "direction": "input"},
+          {"name": "B2_out", "type": "io", "direction": "output"},
+          {"name": "B2_oe", "type": "io", "direction": "output"},
+          {"name": "B3_in", "type": "io", "direction": "input"},
+          {"name": "B3_out", "type": "io", "direction": "output"},
+          {"name": "B3_oe", "type": "io", "direction": "output"},
+          {"name": "B4_in", "type": "io", "direction": "input"},
+          {"name": "B4_out", "type": "io", "direction": "output"},
+          {"name": "B4_oe", "type": "io", "direction": "output"},
+          {"name": "B5_in", "type": "io", "direction": "input"},
+          {"name": "B5_out", "type": "io", "direction": "output"},
+          {"name": "B5_oe", "type": "io", "direction": "output"},
+          {"name": "B6_in", "type": "io", "direction": "input"},
+          {"name": "B6_out", "type": "io", "direction": "output"},
+          {"name": "B6_oe", "type": "io", "direction": "output"},
+          {"name": "B7_in", "type": "io", "direction": "input"},
+          {"name": "B7_out", "type": "io", "direction": "output"},
+          {"name": "B7_oe", "type": "io", "direction": "output"}
+        ],
+        
+        "spacing": "auto"
+      },
+      "west": {
+        "pins": [
+          {"name": "C0_in", "type": "io", "direction": "input"},
+          {"name": "C0_out", "type": "io", "direction": "output"},
+          {"name": "C0_oe", "type": "io", "direction": "output"},
+          {"name": "C1_in", "type": "io", "direction": "input"},
+          {"name": "C1_out", "type": "io", "direction": "output"},
+          {"name": "C1_oe", "type": "io", "direction": "output"},
+          {"name": "C2_in", "type": "io", "direction": "input"},
+          {"name": "C2_out", "type": "io", "direction": "output"},
+          {"name": "C2_oe", "type": "io", "direction": "output"},
+          {"name": "C3_in", "type": "io", "direction": "input"},
+          {"name": "C3_out", "type": "io", "direction": "output"},
+          {"name": "C3_oe", "type": "io", "direction": "output"},
+          {"name": "C4_in", "type": "io", "direction": "input"},
+          {"name": "C4_out", "type": "io", "direction": "output"},
+          {"name": "C4_oe", "type": "io", "direction": "output"},
+          {"name": "C5_in", "type": "io", "direction": "input"},
+          {"name": "C5_out", "type": "io", "direction": "output"},
+          {"name": "C5_oe", "type": "io", "direction": "output"},
+          {"name": "C6_in", "type": "io", "direction": "input"},
+          {"name": "C6_out", "type": "io", "direction": "output"},
+          {"name": "C6_oe", "type": "io", "direction": "output"},
+          {"name": "C7_in", "type": "io", "direction": "input"},
+          {"name": "C7_out", "type": "io", "direction": "output"},
+          {"name": "C7_oe", "type": "io", "direction": "output"}
+        ],
+        
+        "spacing": "auto"
+      }
+    }
+  },
+    "margins": {
+    "horizontal": 10.0,
+    "vertical": 10.0
+  },
+  "power_distribution": {
+    "primary_grid": {"VDD": {"layer": "met4", "pitch": 27.6, "width": 2.0}},
+    "secondary_grid": {"VDD": {"layer": "met3", "pitch": 13.8, "width": 1.0}}
+  }
+}
