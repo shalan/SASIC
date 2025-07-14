@@ -1,0 +1,13 @@
+read_verilog rv32e_cpu.v
+synth -top rv32e_cpu
+#extract_fa
+#stat
+# Technology mapping to standard cell library
+dfflibmap -liberty ../../tech/sasic-typ.lib
+write_verilog rv32e_cpu.ff.v
+abc -liberty  ../../tech/sasic-typ.lib
+clean
+
+# Write synthesized design
+write_verilog rv32e_cpu.gl.v
+stat -liberty ../../tech/sasic-typ.lib

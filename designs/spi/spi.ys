@@ -1,0 +1,14 @@
+read_verilog spi.v
+synth -top spi_master
+#extract_fa
+#stat
+
+# Technology mapping to standard cell library
+dfflibmap -liberty ../../tech/sasic-typ.lib
+write_verilog spi.ff.v
+abc -liberty ../../tech/sasic-typ.lib
+clean
+
+# Write synthesized design
+write_verilog spi.gl.v
+stat -liberty ../../tech/sasic-typ.lib
