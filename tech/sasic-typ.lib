@@ -1,0 +1,143 @@
+library(nand_only) {
+    delay_model : table_lookup;
+    
+    cell(sky130_fd_sc_hd__nand2_2) {
+        area: 1;
+        pin(A) { direction: input; }
+        pin(B) { direction: input; }
+        pin(Y) { 
+            direction: output;
+            function: "(A*B)'"; 
+        }
+    }
+    
+    cell(sky130_fd_sc_hd__clkbuf_4) {
+        area: 2;  // Higher area to discourage use
+        pin(A) { direction: input; }
+        pin(Y) { 
+            direction: output;
+            function: "A"; 
+        }
+    }
+    
+    cell(sky130_fd_sc_hd__clkinv_2) {
+        area: 1;
+        pin(A) { direction: input; }
+        pin(Y) { 
+            direction: output;
+            function: "A'"; 
+        }
+    }
+    cell ("sky130_fd_sc_hd__dfbbp_1") {
+        ff ("IQ","IQ_N") {
+            clear : "!RESET_B";
+            clear_preset_var1 : "H";
+            clear_preset_var2 : "L";
+            clocked_on : "CLK";
+            next_state : "D";
+            preset : "!SET_B";
+        }
+        pin ("CLK") {
+            capacitance : 0.0017920000;
+            clock : "true";
+            direction : "input";
+            
+        }
+        pin ("D") {
+            capacitance : 0.0015950000;
+            clock : "false";
+            direction : "input";
+            
+        }
+        pin ("Q") {
+            direction : "output";
+            function : "IQ";
+            
+        }
+        pin ("Q_N") {
+            direction : "output";
+            function : "IQ_N";
+            
+        }
+        pin ("RESET_B") {
+            capacitance : 0.0015970000;
+            clock : "false";
+            direction : "input";
+            
+        }
+        pin ("SET_B") {
+            capacitance : 0.0034380000;
+            clock : "false";
+            direction : "input";
+            
+        }
+    }
+
+
+
+    cell ("sky130_fd_sc_hd__or2_2") {
+        area : 6.2560000000;
+        
+        pin ("A") {
+            capacitance : 0.0014920000;
+            clock : "false";
+            direction : "input";
+            max_transition : 1.5000000000;
+        }
+        pin ("B") {
+            capacitance : 0.0014080000;
+            clock : "false";
+            direction : "input";
+            max_transition : 1.5000000000;
+        }
+        pin ("X") {
+            direction : "output";
+            function : "(A) | (B)";
+        }
+    }
+    cell ("sky130_fd_sc_hd__ha_2") {
+        
+        pin ("A") {
+            capacitance : 0.0034790000;
+            clock : "false";
+            direction : "input";
+            max_transition : 1.5000000000;
+        }
+        pin ("B") {
+            capacitance : 0.0032770000;
+            clock : "false";
+            direction : "input";
+            max_transition : 1.5000000000;
+        }
+        pin ("COUT") {
+            direction : "output";
+            function : "(A&B)";
+        }
+        pin ("SUM") {
+            direction : "output";
+            function : "(A&!B) | (!A&B)";
+        }
+    }
+
+
+    cell ("sky130_fd_sc_hd__conb_1") {
+        area : 3.7536000000;
+        cell_footprint : "sky130_fd_sc_hd__conb";
+        
+        pin ("HI") {
+            direction : "output";
+            function : "1";
+            max_capacitance : 1.9038000000;
+            max_transition : 1.0000000000;
+            power_down_function : "!VPWR";
+        }
+        pin ("LO") {
+            direction : "output";
+            function : "0";
+            max_capacitance : 2.0468000000;
+            max_transition : 1.0000000000;
+            power_down_function : "VGND";
+        }
+    }
+
+}
