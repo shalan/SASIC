@@ -1,9 +1,9 @@
 
-# 2. Fabric Generator (gen_fabric.py) - Complete Formal Requirements Specification
+# Fabric Generator (gen_fabric.py) - Complete Formal Requirements Specification
 
-## FUNCTIONAL REQUIREMENTS
+## 1. FUNCTIONAL REQUIREMENTS
 
-### 2.1 Core Functionality
+### 1.1 Core Functionality
 - **REQ-FUNC-001:** The tool SHALL generate structured ASIC fabrics from JSON input specifications
 - **REQ-FUNC-002:** The tool SHALL support tile-based fabric composition with default tiles and regional overrides
 - **REQ-FUNC-003:** The tool SHALL generate unique cell instance names following the specified naming convention
@@ -13,12 +13,12 @@
 - **REQ-FUNC-007:** The tool SHALL support core area placement with configurable margins
 - **REQ-FUNC-008:** The tool SHALL support both automatic and manual I/O pin positioning
 
-### 2.2 Input Processing
+### 1.2 Input Processing
 - **REQ-INPUT-001:** The tool SHALL accept three JSON input files: technology definition, tile definitions, and fabric configuration
 - **REQ-INPUT-002:** The tool SHALL validate all input files for completeness and consistency before processing
 - **REQ-INPUT-003:** The tool SHALL support technology-specific cell libraries as defined in the technology JSON
 
-### 2.3 Fabric Generation
+### 1.3 Fabric Generation
 - **REQ-FAB-001:** The tool SHALL initialize fabric arrays with default tile types
 - **REQ-FAB-002:** The tool SHALL apply regional tile type overrides to specified rectangular areas
 - **REQ-FAB-003:** The tool SHALL support arbitrary fabric dimensions specified in the configuration
@@ -27,9 +27,9 @@
 
 ---
 
-## 3. INPUT SPECIFICATIONS
+## 2. INPUT SPECIFICATIONS
 
-### 3.1 Technology File (sky130_hd.json)
+### 2.1 Technology File (sky130_hd.json)
 ```json
 {
   "technology": "sky130",
@@ -112,7 +112,7 @@
 - **REQ-TECH-003:** Technology file SHALL specify routing layers met3-met5 as programmable
 - **REQ-TECH-004:** Site definition SHALL specify physical dimensions for placement calculations
 
-### 3.2 Tile Definitions (tiles.json)
+### 2.2 Tile Definitions (tiles.json)
 ```json
 {
   "tiles": [
@@ -152,7 +152,7 @@
 - **REQ-TILE-003:** Tiles SHALL support mixed cell types within rows
 - **REQ-TILE-004:** Tile width SHALL be specified in site units
 
-### 3.3 Fabric Configuration (fabric.json)
+### 2.3 Fabric Configuration (fabric.json)
 ```json
 {
   "name": "Fabric_5x5",
@@ -203,8 +203,8 @@
       "VSS": {"layer": "met4", "pitch": 27.6, "width": 2.0}
     },
     "secondary_grid": {
-      "VDD": {"layer": "met3", "pitch": 13.8, "width": 1.0},
-      "VSS": {"layer": "met3", "pitch": 13.8, "width": 1.0}
+      "VDD": {"layer": "met3", "pitch": 12.8, "width": 1.0},
+      "VSS": {"layer": "met3", "pitch": 12.8, "width": 1.0}
     }
   }
 }
@@ -221,15 +221,15 @@
 
 ---
 
-## 4. EDGE CELL REQUIREMENTS
+## 3. EDGE CELL REQUIREMENTS
 
-### 4.1 Edge Cell Configuration
+### 3.1 Edge Cell Configuration
 - **REQ-EDGE-001:** The tool SHALL support edge cell placement around fabric perimeter
 - **REQ-EDGE-002:** Edge cells SHALL be specified in fabric JSON under "edge_cells" section
 - **REQ-EDGE-003:** Edge cell specification SHALL include enable flag and cell type for each edge
 - **REQ-EDGE-004:** Edge cell types SHALL exist in technology definition
 
-### 4.2 Edge Cell Placement Rules
+### 3.2 Edge Cell Placement Rules
 - **REQ-EDGE-005:** Left/right edge cells SHALL be placed one per fabric row
 - **REQ-EDGE-006:** Left edge cells SHALL be positioned at x=0 of core area
 - **REQ-EDGE-007:** Right edge cells SHALL be positioned at x=left_width+fabric_width
@@ -237,7 +237,7 @@
 - **REQ-EDGE-009:** Edge cells SHALL be placed adjacent with no spacing
 - **REQ-EDGE-010:** Edge cells SHALL expand core area dimensions
 
-### 4.3 Edge Cell Coordinate System
+### 3.3 Edge Cell Coordinate System
 - **REQ-EDGE-011:** For 5×5 fabric with 4×60 tiles and DECAP12 left/right edges:
   - Fabric dimensions: 20 rows × 300 sites
   - Left edge: 20 DECAP12 cells at columns 0-11
@@ -252,15 +252,15 @@
 
 ---
 
-## 5. MARGIN AND CORE AREA REQUIREMENTS
+## 4. MARGIN AND CORE AREA REQUIREMENTS
 
-### 5.1 Margin Specification
+### 4.1 Margin Specification
 - **REQ-MARGIN-001:** Fabric JSON SHALL support margin specification when I/O pins are defined
 - **REQ-MARGIN-002:** Margins SHALL define core area placement within die area
 - **REQ-MARGIN-003:** Margin values SHALL be specified in microns
 - **REQ-MARGIN-004:** Margins SHALL be positive numbers
 
-### 5.2 Core Area Definition
+### 4.2 Core Area Definition
 - **REQ-MARGIN-005:** Core area SHALL contain fabric including edge cells
 - **REQ-MARGIN-006:** Margin area SHALL be available for I/O pins and power rings
 - **REQ-MARGIN-007:** Die area = Core area + 2×margins
@@ -269,23 +269,23 @@
 
 ---
 
-## 6. I/O RING PIN POSITIONING REQUIREMENTS
+## 5. I/O RING PIN POSITIONING REQUIREMENTS
 
-### 6.1 Pin Location Specification
+### 5.1 Pin Location Specification
 - **REQ-PIN-001:** I/O ring SHALL support both automatic and manual pin positioning
 - **REQ-PIN-002:** Pin positioning mode SHALL be specified per edge using "spacing" attribute
 - **REQ-PIN-003:** Automatic spacing SHALL use "spacing": "auto"
 - **REQ-PIN-004:** Manual positioning SHALL use "spacing": "manual"
 - **REQ-PIN-005:** Manual positioning SHALL require position field for each pin
 
-### 6.2 Pin Size Configuration
+### 5.2 Pin Size Configuration
 - **REQ-PIN-006:** Pin physical size SHALL be configurable via "pin_size" attribute in fabric JSON
 - **REQ-PIN-007:** Pin size SHALL default to 1×1 database units if not specified
 - **REQ-PIN-008:** Pin size SHALL be configurable via command line argument --pin-size
 - **REQ-PIN-009:** Command line pin size SHALL override JSON specification
 - **REQ-PIN-010:** Pin size SHALL be specified in database units or microns
 
-### 6.3 Position Coordinate System
+### 5.3 Position Coordinate System
 - **REQ-PIN-011:** Pin positions SHALL be specified in microns from die corner
 - **REQ-PIN-012:** Position coordinate directions SHALL be:
   - North edge: 0.0 = left corner, increases rightward
@@ -293,28 +293,28 @@
   - East edge: 0.0 = bottom corner, increases upward
   - West edge: 0.0 = bottom corner, increases upward
 
-### 6.4 Pin Positioning Validation
+### 5.4 Pin Positioning Validation
 - **REQ-PIN-013:** Manual pin positions SHALL not overlap with each other
 - **REQ-PIN-014:** Pins SHALL be positioned within margin areas only
 - **REQ-PIN-015:** Pins SHALL not extend into core area
 - **REQ-PIN-016:** Pin positions SHALL be validated against die boundary limits
 
-### 6.5 Mixed Mode Validation
+### 5.5 Mixed Mode Validation
 - **REQ-PIN-017:** Manual and auto spacing SHALL NOT be mixed on same edge
 - **REQ-PIN-018:** All pins on manual spacing edge SHALL specify position field
 - **REQ-PIN-019:** Missing position field in manual mode SHALL trigger error
 - **REQ-PIN-020:** Position field in auto mode SHALL trigger warning and be ignored
 
-### 6.6 Backward Compatibility
+### 5.6 Backward Compatibility
 - **REQ-PIN-021:** Existing "spacing": "auto" format SHALL continue to work unchanged
 - **REQ-PIN-022:** Edges without spacing specification SHALL default to auto mode
 - **REQ-PIN-023:** Auto spacing SHALL distribute pins evenly as before
 
 ---
 
-## 7. PROCESSING REQUIREMENTS
+## 6. PROCESSING REQUIREMENTS
 
-### 7.1 Coordinate System
+### 6.1 Coordinate System
 - **REQ-COORD-001:** All coordinates SHALL use 0-based indexing
 - **REQ-COORD-002:** Fabric array coordinates SHALL be (row, col) where row ∈ [0, rows-1], col ∈ [0, cols-1]
 - **REQ-COORD-003:** Tile cell coordinates SHALL be (row_id, cell_position) within tile boundaries
@@ -322,13 +322,13 @@
 - **REQ-COORD-005:** Physical coordinates SHALL account for edge cell offsets
 - **REQ-COORD-006:** Physical coordinates SHALL account for margin offsets when specified
 
-### 7.2 Fabric Dimension Calculations
+### 6.2 Fabric Dimension Calculations
 - **REQ-COORD-007:** Fabric dimensions SHALL be calculated as: tiles × tile_dimensions
 - **REQ-COORD-008:** For N×M tile array with H×W tiles: fabric = (N×H) rows × (M×W) sites
 - **REQ-COORD-009:** Core area SHALL include fabric + edge cell dimensions
 - **REQ-COORD-010:** Die area SHALL include core area + 2×margins
 
-### 7.3 Region Processing Algorithm
+### 6.3 Region Processing Algorithm
 - **REQ-PROC-001:** Fabric array SHALL be initialized with default_tile type
 - **REQ-PROC-002:** Regions SHALL be processed in definition order
 - **REQ-PROC-003:** Region coverage SHALL be calculated as:
@@ -336,14 +336,14 @@
   - Column range: [col_start, col_start + width - 1]
 - **REQ-PROC-004:** Overlapping regions SHALL trigger validation errors
 
-### 7.4 Cell Naming Convention
+### 6.4 Cell Naming Convention
 - **REQ-NAME-001:** Cell instance names SHALL follow format: CELLTYPE_TX-Y_CX-Y
 - **REQ-NAME-002:** CELLTYPE SHALL be the cell alias from technology file
 - **REQ-NAME-003:** TX-Y SHALL represent tile position (T + row + "-" + col)
 - **REQ-NAME-004:** CX-Y SHALL represent cell position within tile (C + row_id + "-" + cell_position)
 - **REQ-NAME-005:** Example: NAND2_T2-3_C1-4 for NAND2 in tile (2,3) at cell position (1,4)
 
-### 7.5 Edge Cell Processing
+### 6.5 Edge Cell Processing
 - **REQ-PROC-005:** Edge cells SHALL be generated based on fabric row/site dimensions
 - **REQ-PROC-006:** Left/right edge cells SHALL be generated one per fabric row
 - **REQ-PROC-007:** Top/bottom edge cells SHALL span complete core width
@@ -351,38 +351,38 @@
 
 ---
 
-## 8. VALIDATION REQUIREMENTS
+## 7. VALIDATION REQUIREMENTS
 
-### 8.1 Input Validation
+### 7.1 Input Validation
 - **REQ-VAL-001:** Unknown cell types SHALL trigger validation errors
 - **REQ-VAL-002:** Unknown tile types SHALL trigger validation errors
 - **REQ-VAL-003:** Missing technology definitions SHALL trigger validation errors
 - **REQ-VAL-004:** Malformed JSON SHALL trigger parsing errors with line numbers
 
-### 8.2 Tile Validation
+### 7.2 Tile Validation
 - **REQ-VAL-005:** Sum of cell widths per row SHALL equal declared tile width
 - **REQ-VAL-006:** All rows within a tile SHALL have identical total width
 - **REQ-VAL-007:** Adjacent cells within rows SHALL NOT overlap sites
 - **REQ-VAL-008:** Gaps between cells within rows SHALL be reported as errors
 - **REQ-VAL-009:** Cell count and type consistency SHALL be validated
 
-### 8.3 Fabric Validation
+### 7.3 Fabric Validation
 - **REQ-VAL-010:** Regions SHALL NOT extend beyond fabric array boundaries
 - **REQ-VAL-011:** Overlapping regions SHALL trigger validation errors
 - **REQ-VAL-012:** Region boundaries SHALL be validated: row_start + height ≤ array_rows
 - **REQ-VAL-013:** Region boundaries SHALL be validated: col_start + width ≤ array_cols
 
-### 8.4 Edge Cell Validation
+### 7.4 Edge Cell Validation
 - **REQ-VAL-014:** Edge cell types SHALL exist in technology definition
 - **REQ-VAL-015:** Edge cell specifications SHALL be validated for completeness
 - **REQ-VAL-016:** Disabled edges SHALL be ignored in processing
 
-### 8.5 Margin Validation
+### 7.5 Margin Validation
 - **REQ-VAL-017:** Margins SHALL be specified when I/O pins are defined
 - **REQ-VAL-018:** Margin values SHALL be positive numbers
 - **REQ-VAL-019:** Core area SHALL fit within die area including margins
 
-### 8.6 Pin Position Validation
+### 7.6 Pin Position Validation
 - **REQ-VAL-020:** For each manually positioned pin, validate:
   - Position ≥ margin_start for that edge
   - Position + pin_size ≤ edge_length - margin_end
@@ -392,7 +392,7 @@
 - **REQ-VAL-021:** Pin overlap detection SHALL check rectangular boundaries
 - **REQ-VAL-022:** Margin boundary validation SHALL ensure pins remain in margin areas
 
-### 8.7 Error Handling
+### 7.7 Error Handling
 - **REQ-ERR-001:** Validation errors SHALL halt processing and report specific issues
 - **REQ-ERR-002:** Error messages SHALL include position information (tile, row, cell coordinates)
 - **REQ-ERR-003:** Multiple errors SHALL be collected and reported together when possible
@@ -400,9 +400,9 @@
 
 ---
 
-## 9. OUTPUT REQUIREMENTS
+## 8. OUTPUT REQUIREMENTS
 
-### 9.1 DEF File Output
+### 8.1 DEF File Output
 - **REQ-OUT-001:** DEF file SHALL contain complete fabric layout with placed cells
 - **REQ-OUT-002:** DEF file SHALL include physical coordinates for each cell instance
 - **REQ-OUT-003:** DEF file SHALL use generated cell instance names
@@ -412,7 +412,7 @@
 - **REQ-OUT-007:** DEF component placement SHALL be offset by margins
 - **REQ-OUT-008:** Edge cells SHALL be included as DEF components with proper naming
 
-### 9.2 DEF Row Definitions
+### 8.2 DEF Row Definitions
 - **REQ-OUT-009:** DEF file SHALL include ROWS section with site-based row definitions
 - **REQ-OUT-010:** Row definitions SHALL include top edge row if top edge cells enabled
 - **REQ-OUT-011:** Row definitions SHALL include fabric rows (ROW_0, ROW_1, ..., ROW_N)
@@ -420,14 +420,14 @@
 - **REQ-OUT-013:** Row coordinates SHALL be in database units with proper margin offsets
 - **REQ-OUT-014:** Row names SHALL follow standard DEF naming conventions
 
-### 9.3 DEF Pin Definitions
+### 8.3 DEF Pin Definitions
 - **REQ-OUT-015:** DEF pins SHALL include RECT definitions with configured dimensions
 - **REQ-OUT-016:** Pin coordinates SHALL be converted to database units
 - **REQ-OUT-017:** Pin placement SHALL respect margin boundaries
 - **REQ-OUT-018:** Manual pin positions SHALL be used exactly as specified
 - **REQ-OUT-019:** Auto-spaced pins SHALL be evenly distributed in margin area
 
-### 9.4 LEF File Output
+### 8.4 LEF File Output
 - **REQ-OUT-020:** LEF file SHALL define fabric as single macro block
 - **REQ-OUT-021:** LEF file SHALL include I/O pin definitions and locations
 - **REQ-OUT-022:** LEF file SHALL specify routing layers met3-met5
@@ -437,7 +437,7 @@
 - **REQ-OUT-026:** LEF pin definitions SHALL use configured pin size
 - **REQ-OUT-027:** Pin rectangles SHALL be centered on specified positions
 
-### 9.5 JSON Output
+### 8.5 JSON Output
 - **REQ-OUT-028:** JSON output SHALL provide complete fabric representation
 - **REQ-OUT-029:** JSON output SHALL include cell positions and tile assignments
 - **REQ-OUT-030:** JSON output SHALL provide fabric statistics (cell counts, area, resources)
@@ -449,9 +449,9 @@
 
 ---
 
-## 10. VISUALIZATION REQUIREMENTS
+## 9. VISUALIZATION REQUIREMENTS
 
-### 10.1 Fabric SVG Requirements
+### 9.1 Fabric SVG Requirements
 - **REQ-VIS-001:** Tool SHALL generate fabric SVG showing die area, core area, and tiles
 - **REQ-VIS-002:** Fabric SVG SHALL show die area boundary in red
 - **REQ-VIS-003:** Fabric SVG SHALL show core area boundary in blue
@@ -461,7 +461,7 @@
 - **REQ-VIS-007:** Fabric SVG SHALL use proportional scaling based on actual micron dimensions
 - **REQ-VIS-008:** Fabric SVG SHALL NOT show individual cell details within tiles
 
-### 10.2 Tile SVG Requirements
+### 9.2 Tile SVG Requirements
 - **REQ-VIS-009:** Tool SHALL generate individual SVG files for each tile type used in fabric
 - **REQ-VIS-010:** Tile SVG files SHALL be named tile_TILETYPE.svg
 - **REQ-VIS-011:** Tile SVG SHALL show individual cells with proportional dimensions
@@ -471,7 +471,7 @@
 - **REQ-VIS-015:** Tile SVG SHALL show physical dimensions and scale information
 - **REQ-VIS-016:** Tile SVG files SHALL be generated in same output directory
 
-### 10.3 Color Scheme Requirements
+### 9.3 Color Scheme Requirements
 - **REQ-VIS-017:** Logic cells (NAND, NOR, INV, etc.) SHALL use distinct colors
 - **REQ-VIS-018:** Sequential cells (DFF, LATCH, etc.) SHALL use distinct colors
 - **REQ-VIS-019:** Physical cells (TAP, CONB) SHALL use distinct colors
@@ -480,7 +480,7 @@
 - **REQ-VIS-022:** Different tile types SHALL use distinct background colors
 - **REQ-VIS-023:** I/O pins SHALL use distinct color (gold) for visibility
 
-### 10.4 Legend Requirements
+### 9.4 Legend Requirements
 - **REQ-VIS-024:** Fabric SVG SHALL include comprehensive legend showing:
   - Die area boundary (red line)
   - Core area boundary (blue line)
@@ -491,7 +491,7 @@
 - **REQ-VIS-025:** Tile SVG SHALL include title with tile type, dimensions, cell count, and area
 - **REQ-VIS-033:** SVG generation SHALL log figure dimensions and vector format confirmation
 
-### 10.5 Scalable Vector Graphics Requirements
+### 9.5 Scalable Vector Graphics Requirements
 - **REQ-VIS-026:** All visualizations SHALL maintain accurate aspect ratios
 - **REQ-VIS-027:** Scaling SHALL be based on actual physical dimensions in microns
 - **REQ-VIS-028:** SVG format SHALL provide infinite scalability without quality loss
@@ -503,39 +503,39 @@
 
 ---
 
-## 11. OUTPUT NAMING REQUIREMENTS
+## 10. OUTPUT NAMING REQUIREMENTS
 
-### 11.1 Automatic Name/Directory Matching
+### 10.1 Automatic Name/Directory Matching
 - **REQ-NAME-006:** If only --output-dir path/name provided, extract "name" as base name
 - **REQ-NAME-007:** If only --output-name name provided, create directory "name/"
 - **REQ-NAME-008:** If both provided, use both as specified
 - **REQ-NAME-009:** Base name SHALL default to fabric JSON name if neither provided
 
-### 11.2 Output File Naming
+### 10.2 Output File Naming
 - **REQ-NAME-010:** Main outputs SHALL use base name: basename.def, basename.lef, etc.
 - **REQ-NAME-011:** Tile SVGs SHALL use format: tile_TILETYPE.svg
 - **REQ-NAME-012:** All outputs SHALL be generated in specified output directory
 
 ---
 
-## 12. PERFORMANCE REQUIREMENTS
+## 11. PERFORMANCE REQUIREMENTS
 
-### 12.1 Scalability
+### 11.1 Scalability
 - **REQ-PERF-001:** Tool SHALL support fabric arrays up to 100×100 tiles
 - **REQ-PERF-002:** Tool SHALL complete processing for 10×10 fabric within 10 seconds
 - **REQ-PERF-003:** Memory usage SHALL scale linearly with fabric size
 - **REQ-PERF-004:** Tool SHALL provide progress indication for large fabrics
 
-### 12.2 Resource Requirements
+### 11.2 Resource Requirements
 - **REQ-PERF-005:** Tool SHALL run on systems with minimum 4GB RAM
 - **REQ-PERF-006:** Tool SHALL support standard Python 3.8+ installations
 - **REQ-PERF-007:** Tool SHALL have minimal external dependencies
 
 ---
 
-## 13. INTERFACE REQUIREMENTS
+## 12. INTERFACE REQUIREMENTS
 
-### 13.1 Command Line Interface
+### 12.1 Command Line Interface
 ```bash
 python gen_fabric.py technology.json tiles.json fabric.json [options]
 
@@ -565,7 +565,7 @@ Options:
 - **REQ-CLI-006:** Pin size SHALL be specified in database units or microns
 - **REQ-CLI-007:** Command line pin size SHALL override fabric JSON specification
 
-### 13.2 Integration Requirements
+### 12.2 Integration Requirements
 - **REQ-INT-001:** Tool SHALL integrate with broader Sky130 design flow
 - **REQ-INT-002:** Generated DEF files SHALL be compatible with structured ASIC placer
 - **REQ-INT-003:** Tool SHALL support batch processing of multiple fabric configurations
@@ -573,48 +573,48 @@ Options:
 
 ---
 
-## 14. STATISTICS REQUIREMENTS
+## 13. STATISTICS REQUIREMENTS
 
-### 14.1 Fabric Statistics
+### 13.1 Fabric Statistics
 - **REQ-STAT-001:** Statistics SHALL include tile array dimensions (N×M tiles)
 - **REQ-STAT-002:** Statistics SHALL include fabric dimensions (rows×sites)
 - **REQ-STAT-003:** Statistics SHALL include core area dimensions including edge cells
 - **REQ-STAT-004:** Statistics SHALL include die area and core area dimensions
 - **REQ-STAT-005:** Statistics SHALL include cell counts by type and category
 
-### 14.2 Edge Cell Statistics
+### 13.2 Edge Cell Statistics
 - **REQ-STAT-006:** Statistics SHALL include edge cell counts by type and direction
 - **REQ-STAT-007:** Statistics SHALL show edge cell dimensions and positions
 - **REQ-STAT-008:** Statistics SHALL report edge cell utilization separately from fabric cells
 
-### 14.3 Dimensional Statistics
+### 13.3 Dimensional Statistics
 - **REQ-STAT-009:** Statistics SHALL show fabric dimensions in both sites and microns
 - **REQ-STAT-010:** Statistics SHALL show core area dimensions including edge cell contributions
 - **REQ-STAT-011:** Statistics SHALL include margin information when specified
 - **REQ-STAT-012:** Statistics SHALL provide area calculations in μm²
 
-### 14.4 I/O Pin Statistics
+### 13.4 I/O Pin Statistics
 - **REQ-STAT-013:** Statistics SHALL include I/O pin counts by edge and type
 - **REQ-STAT-014:** Statistics SHALL include pin positioning mode per edge
 - **REQ-STAT-015:** Statistics SHALL include configured pin dimensions
 
 ---
 
-## 15. QUALITY REQUIREMENTS
+## 14. QUALITY REQUIREMENTS
 
-### 15.1 Reliability
+### 14.1 Reliability
 - **REQ-QUA-001:** Tool SHALL validate all inputs before processing
 - **REQ-QUA-002:** Tool SHALL handle edge cases gracefully
 - **REQ-QUA-003:** Tool SHALL provide deterministic outputs for identical inputs
 - **REQ-QUA-004:** Tool SHALL include comprehensive error checking
 
-### 15.2 Maintainability
+### 14.2 Maintainability
 - **REQ-QUA-005:** Code SHALL follow Python PEP 8 style guidelines
 - **REQ-QUA-006:** Code SHALL include comprehensive docstrings and comments
 - **REQ-QUA-007:** Code SHALL be modular with clear separation of concerns
 - **REQ-QUA-008:** Code SHALL include unit tests for all major functions
 
-### 15.3 Documentation
+### 14.3 Documentation
 - **REQ-DOC-001:** Tool SHALL include comprehensive user documentation
 - **REQ-DOC-002:** Tool SHALL include API documentation for all public functions
 - **REQ-DOC-003:** Tool SHALL include example configurations and tutorials
@@ -622,9 +622,9 @@ Options:
 
 ---
 
-## 16. EXAMPLE USE CASES
+## 15. EXAMPLE USE CASES
 
-### 16.1 Basic 5×5 Fabric Example
+### 15.1 Basic 5×5 Fabric Example
 **Configuration:**
 - 5×5 tile array using Logic_4x60 tiles
 - DECAP12 left/right edge cells
@@ -634,10 +634,10 @@ Options:
 **Expected Results:**
 - Fabric dimensions: 20 rows × 300 sites
 - Edge cells: 20 left + 20 right + spanning top/bottom
-- Core area: 324 sites × 22 rows (148.94 × 59.84 μm)
-- Die area: Core + 2×margins (248.94 × 119.84 μm)
+- Core area: 324 sites × 22 rows (147.94 × 58.84 μm)
+- Die area: Core + 2×margins (247.94 × 118.84 μm)
 
-### 16.2 Regional Override Example
+### 15.2 Regional Override Example
 **Configuration:**
 - 3×3 tile array with Logic_4x60 default
 - Memory_4x60 region at (1,1) with 2×2 area
@@ -647,45 +647,3 @@ Options:
 - Center 4 tiles use Memory_4x60
 - Outer 5 tiles use Logic_4x60
 - Edge cells around complete perimeter
-
----
-
-## 17. IMPLEMENTATION PHASES
-
-### Phase 1: Core Functionality
-- JSON parsing and validation
-- Basic fabric generation with default tiles
-- Region processing and overlap detection
-- Cell naming convention implementation
-- DEF file output generation with rows
-
-### Phase 2: Edge Cell Implementation
-- Edge cell placement logic
-- Core area dimension calculations
-- Proper coordinate system handling
-- Edge cell validation and error checking
-- Updated statistics reporting
-
-### Phase 3: Enhanced Visualization
-- Die area and core area visualization
-- Proportional scaling implementation
-- Individual tile SVG generation
-- Color coding and legend implementation
-- I/O pin visualization
-
-### Phase 4: I/O Ring Enhancements
-- Manual pin positioning support
-- Pin size configuration
-- Pin overlap validation
-- Enhanced LEF/DEF pin output
-- Backward compatibility testing
-
-### Phase 5: Integration and Quality
-- Output naming enhancements
-- Comprehensive testing and validation
-- Performance optimization
-- Documentation completion
-- Example configurations and tutorials
-
----
-
